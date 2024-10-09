@@ -37,7 +37,9 @@ export function Header() {
             src={language === "en" ? eeuuIcon : colombiaIcon}
             alt={language === "en" ? "USA" : "Colombia"}
           />
-          <span>{language === "en" ? "EN" : "ES"}</span>
+          <span className={language === "en" ? "language-en" : "language-es"}>
+            {language === "en" ? "EN" : "ES"}
+          </span>
         </button>
         <input
           onChange={toggleTheme}

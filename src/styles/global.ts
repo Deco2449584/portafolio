@@ -20,6 +20,18 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--black);
       }
 
+ .language-en,
+  .language-es {
+    color: #000000; /* Color de letra negro */
+  }
+  .project {
+      background-color: #ffffff; 
+      color: #000000; 
+      &:hover {
+        background-color: #f5f5f5; 
+      }
+    }
+
       header.header-fixed{
         transition: 0.5s;
         background-color: #f5f5f550;
@@ -115,4 +127,4 @@ export const GlobalStyle = createGlobalStyle`
     //   color: var(--green);
     // }
   }
-`
+`;
