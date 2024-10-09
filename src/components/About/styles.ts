@@ -26,7 +26,6 @@ export const Container = styled.section`
   h2{
     display: inline-block;
     margin-bottom: 2rem;
-    // border-bottom: 0.2rem solid var(--blue);
     font-size :3rem;
     margin-top: 0rem;
     color: var(--green);
@@ -37,10 +36,11 @@ export const Container = styled.section`
     color: var(--green);
   }
 
-  p{
+   p {
     font-size: 1.8rem;
     letter-spacing: 0.1rem;
     font-weight: 500;
+    text-align: justify; 
   }
   
   
@@ -96,4 +96,4 @@ export const Container = styled.section`
     
   }
 
-`
+`;
