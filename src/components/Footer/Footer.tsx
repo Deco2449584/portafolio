@@ -8,10 +8,8 @@ import instagramIcon from "../../assets/instagram.svg";
 // import discordIcon from '../../assets/discord.png'
 import { useTranslation } from "react-i18next";
 
-
 export function Footer() {
   const { t } = useTranslation();
-
 
   return (
     <Container className="footer">
@@ -23,7 +21,6 @@ export function Footer() {
       <div>
         <p>
           {t("footer_made_with")} <img src={reactIcon} alt="React" />
-          {/* <span>❤️</span> */}
         </p>
       </div>
       <div className="social-media">

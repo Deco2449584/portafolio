@@ -86,7 +86,7 @@ export function Project() {
                   <img src={githubIcon} alt="Visit site" />
                 </a>
                 <a
-                  href="https://ai-chatbot-t8fn.onrender.com"
+                  href="https://danielcaro.online"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -134,7 +134,7 @@ export function Project() {
                   <img src={githubIcon} alt="Visit site" />
                 </a>
                 <a
-                  href="https://github.com/deco2449584"
+                  href="https://danielcaro.online"
                   target="_blank"
                   rel="noreferrer"
                 >
