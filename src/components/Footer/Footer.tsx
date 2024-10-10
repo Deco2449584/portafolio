@@ -14,8 +14,7 @@ export function Footer() {
   return (
     <Container className="footer">
       <a href="https://danielcaro.online" className="logo">
-        <span>DanielCaro</span>
-        <span>.online</span>
+        <span>Danielcaro.online</span>
       </a>
 
       <div>
