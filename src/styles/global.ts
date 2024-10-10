@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { TabButton, ProjectCard } from "../components/Project/styles";
 
 export const GlobalStyle = createGlobalStyle`
   :root{
@@ -9,7 +10,6 @@ export const GlobalStyle = createGlobalStyle`
     scroll-padding-top: 10rem;
 
     &.light{
-
       body{
         transition: 0.5s;
         background-color: #f5f5f5;
@@ -20,17 +20,47 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--black);
       }
 
- .language-en,
-  .language-es {
-    color: #000000; /* Color de letra negro */
-  }
-  .project {
-      background-color: #ffffff; 
-      color: #000000; 
-      &:hover {
-        background-color: #f5f5f5; 
+      .language-en,
+      .language-es {
+        color: #000000; /* Color de letra negro */
       }
-    }
+
+      ${ProjectCard} {
+        background-color: #f5f5f5;
+        color: var(--black);
+
+        &:hover {
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-stack span {
+          background-color: #e0e0e0;
+          color: var(--black);
+
+          &:hover {
+            background-color: var(--green);
+            color: #fff;
+          }
+        }
+
+        .project-links a {
+          color: var(--black);
+
+          &:hover {
+            color: var(--green);
+          }
+        }
+      }
+
+      ${TabButton} {
+        color: var(--black);
+        border-color: var(--green);
+
+        &:hover, &[active] {
+          background-color: var(--green);
+          color: #fff;
+        }
+      }
 
       header.header-fixed{
         transition: 0.5s;
@@ -64,7 +94,6 @@ export const GlobalStyle = createGlobalStyle`
           }
         }
       }
-
     }
   }
 
@@ -118,7 +147,6 @@ export const GlobalStyle = createGlobalStyle`
     filter: brightness(0.8);
     cursor: not-allowed;
   }
-
 
   .logo{
     font-size: 3rem;

@@ -1,209 +1,79 @@
-import { Container } from "./styles";
-import githubIcon from "../../assets/github.svg";
-import externalLink from "../../assets/external-link.svg";
-import ScrollAnimation from "react-animate-on-scroll";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Container, ProjectCard, CategoryTabs, TabButton } from "./styles";
+import { ExternalLink } from "lucide-react";
+import projects from "./projectsData";
+import githubIcon from "../../assets/github.svg";
 
 export function Project() {
   const { t } = useTranslation();
+  const [activeTab, setActiveTab] = useState<"all" | "domotica" | "software">(
+    "all"
+  );
+
+  const filteredProjects = projects.filter(
+    (project) => activeTab === "all" || project.category === activeTab
+  );
 
   return (
     <Container id="project">
       <h2>{t("project_title")}</h2>
-      <p>{t("project_description")}</p>
+      <CategoryTabs>
+        <TabButton
+          onClick={() => setActiveTab("all")}
+          active={activeTab === "all"}
+        >
+          {t("all")}
+        </TabButton>
+        <TabButton
+          onClick={() => setActiveTab("domotica")}
+          active={activeTab === "domotica"}
+        >
+          {t("domotica")}
+        </TabButton>
+        <TabButton
+          onClick={() => setActiveTab("software")}
+          active={activeTab === "software"}
+        >
+          {t("software")}
+        </TabButton>
+      </CategoryTabs>
       <div className="projects">
-        <ScrollAnimation animateIn="flipInX">
-          <div className="project">
-            <header>
-              <svg
-                width="50"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#23ce6b"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <title>Folder</title>
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-              </svg>
-              <div className="project-links">
-                <a
-                  href="https://github.com/deco2449584"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={githubIcon} alt="Visit site" />
-                </a>
-                <a
-                  href="https://danielcaro.online"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={externalLink} alt="Visit site" />
-                </a>
-              </div>
-            </header>
-            <div className="body">
-              <h3>{t("project1_title")}</h3>
-              <p>{t("project1_description")}</p>
+        {filteredProjects.map((project) => (
+          <ProjectCard key={project.id}>
+            <img src={project.image} alt={project.title} />
+            <h3>{t(project.title)}</h3>
+            <p>{t(project.description)}</p>
+            <div className="tech-stack">
+              {project.techStack.map((tech) => (
+                <span key={tech}>{tech}</span>
+              ))}
             </div>
-            <footer>
-              <ul className="tech-list">
-                <li>AWS Lambda</li>
-                <li>API Gateway</li>
-                <li>DynamoDB</li>
-              </ul>
-            </footer>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation animateIn="flipInX">
-          <div className="project">
-            <header>
-              <svg
-                width="50"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#23ce6b "
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <div className="project-links">
+              {project.category === "software" && project.githubLink && (
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="social-media"
+                    src={githubIcon}
+                    alt="GitHub"
+                    style={{ width: "28px", height: "28px" }}
+                  />{" "}
+                </a>
+              )}
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <title>Folder</title>
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-              </svg>
-              <div className="project-links">
-                <a
-                  href="https://github.com/deco2449584"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={githubIcon} alt="Visit site" />
-                </a>
-                <a
-                  href="https://danielcaro.online"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={externalLink} alt="Visit site" />
-                </a>
-              </div>
-            </header>
-            <div className="body">
-              <h3>{t("project2_title")}</h3>
-              <p>{t("project2_description")}</p>
+                <ExternalLink />
+              </a>
             </div>
-            <footer>
-              <ul className="tech-list">
-                <li>Streamlit</li>
-                <li>PyPDF2</li>
-                <li>LangChain</li>
-              </ul>
-            </footer>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation animateIn="flipInX">
-          <div className="project">
-            <header>
-              <svg
-                width="50"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#23ce6b"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <title>Folder</title>
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-              </svg>
-              <div className="project-links">
-                <a
-                  href="https://github.com/deco2449584"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={githubIcon} alt="Visit site" />
-                </a>
-                <a
-                  href="https://danielcaro.online"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={externalLink} alt="Visit site" />
-                </a>
-              </div>
-            </header>
-            <div className="body">
-              <h3>{t("project3_title")}</h3>
-              <p>{t("project3_description")}</p>
-            </div>
-            <footer>
-              <ul className="tech-list">
-                <li>XGBoost</li>
-                <li>Pandas</li>
-                <li>Matplotlib</li>
-              </ul>
-            </footer>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation animateIn="flipInX">
-          <div className="project">
-            <header>
-              <svg
-                width="50"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#23ce6b "
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <title>Folder</title>
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-              </svg>
-              <div className="project-links">
-                <a
-                  href="https://github.com/deco2449584"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={githubIcon} alt="Visit site" />
-                </a>
-                <a
-                  href="https://danielcaro.online"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={externalLink} alt="Visit site" />
-                </a>
-              </div>
-            </header>
-            <div className="body">
-              <h3>{t("project4_title")}</h3>
-              <p>{t("project4_description")}</p>
-            </div>
-            <footer>
-              <ul className="tech-list">
-                <li>PHP</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>MySQL</li>
-              </ul>
-            </footer>
-          </div>
-        </ScrollAnimation>
+          </ProjectCard>
+        ))}
       </div>
     </Container>
   );
